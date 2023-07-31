@@ -169,7 +169,7 @@ Após a conclusão desta etapa, os dados estão prontos para serem carregados no
 Esses comandos utilizam a interface da linha de comando do Hadoop (hdfs dfs) para criar diretórios e enviar os arquivos HIST_PAINEL_COVIDBR_*.csv para a pasta /projeto-final/dados no HDFS. O ponto de exclamação (!) no início de cada linha indica que esses comandos são executados diretamente no shell do ambiente do Jupyter Notebook.
 
 Abaixo, a imagem mostrando o resultado do envio dos dados para HDFS : 
-<IMAGEM 0001>
+![Dados no HDFS](https://github.com/cinthialet/spark-hive-elastic_semantix/blob/main/img/IMAGEM%2001.png)
 
 ### 5.2. Otimizar todos os dados do hdfs para uma tabela Hive particionada por município
 Para otimizar os dados do HDFS e criar uma tabela Hive particionada por município, precisamos realizar as seguintes etapas no código:
