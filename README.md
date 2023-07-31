@@ -354,11 +354,11 @@ Com isso, o tópico kafka `obitoscvd19` está conectado ao stream `stream_obitos
 Embora tenha enfrentado dificuldades com a integração inicial do Jupyter Notebook com o Kafka, a abordagem adotada com o KSQLDB permitiu avançar no projeto e garantir a disponibilidade dos dados na plataforma Kafka. Futuramente, será possível reavaliar a integração com o Jupyter Notebook para tornar o processo ainda mais eficiente e otimizado.
 
 ![img9](https://github.com/cinthialet/spark-hive-elastic_semantix/blob/main/img/IMAGEM%2009.png)
-![img10](https://github.com/cinthialet/spark-hive-elastic_semantix/blob/main/img/IMAGEM%20010.png)
+![img10](https://github.com/cinthialet/spark-hive-elastic_semantix/blob/main/img/IMAGEM%2010.png)
 
 Para checar os dados no tópico Kafka, foi utilizado o seguinte comando (via terminal) `kafka-console-consumer --topic obitoscvd19 --bootstrap-server localhost:9092 --from-beginning` e obtido o resultado : 
 
-<IMAGEM 0011>
+![img11](https://github.com/cinthialet/spark-hive-elastic_semantix/blob/main/img/IMAGEM%2011.png)
 
 ### 5.7 Criar a visualização com os dados enviados para o HDFS (via Spark):
 
@@ -394,7 +394,7 @@ Explicação do código:
 Essa visualização pode fornecer insights valiosos para análise da evolução da COVID-19 em diferentes regiões e municípios, permitindo a identificação de padrões e tendências ao longo do tempo. Além disso, o cálculo da incidência e mortalidade por 100.000 habitantes ajuda a comparar a situação entre diferentes localidades, levando em consideração o tamanho da população de cada região.
 
 Abaixo, o resultado : 
-![img12](https://github.com/cinthialet/spark-hive-elastic_semantix/blob/main/img/IMAGEM%20012.png)
+![img12](https://github.com/cinthialet/spark-hive-elastic_semantix/blob/main/img/IMAGEM%2012.png)
 
 ### 5.8. Enviar os dados da visualização 3 para um tópico Elastic
 
