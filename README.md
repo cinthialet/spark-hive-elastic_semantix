@@ -421,6 +421,91 @@ Abaixo, o resultado :
 
 ### 5.8. Enviar os dados da visualização 3 para um tópico Elastic
 [voltar para sumário](#sum%C3%A1rio)
+Essa etapa é dividida em 4 partes : 
+   1. Configuração do conector
+   2. Criação de índice
+   3. Indexação dos dados no Elastic
+   4. Checagem no Kibana
+      
+#### 5.8.1 Configuração do Conector para o Elasticsearch
+Para conectar o Kafka ao Elasticsearch e enviar dados para o índice "obitoscvd19", o processo foi executado da seguinte maneira:
+No `Control Center` foi criada uma conexão manual ao Elasticsearch, inserindo as seguintes configurações no arquivo de propriedades do conector:
+
+```properties
+name=elastisearch-sink
+topics=obitoscvd19
+connector.class=io.confluent.connect.elasticsearch.ElasticsearchSinkConnector
+connection.url=http://elasticsearch:9200
+type.name=_doc
+value.converter=org.apache.kafka.connect.json.JsonConverter
+value.converter.schemas.enable=false
+schema.ignore=true
+key.ignore=true
+behavior.on.malformed.documents=ignore 
+transforms=extractValue
+transforms.extractValue.type=org.apache.kafka.connect.transforms.ExtractField$Value
+transforms.extractValue.field=payload
+```
+Abaixo mostra a conexão feita com o elasticsearch e o tópico do kafka que foi criado anteriormente:
+![img13](https://github.com/cinthialet/spark-hive-elastic_semantix/blob/main/img/IMAGEM%2013.png)
+
+
+#### 5.8.2 Criação do índice
+**Descrição do Problema**
+Após a configuração do conector Elasticsearch no Control Center, o tópico "obitoscvd19" do Kafka estava sendo corretamente consumido e um índice com o mesmo nome era criado automaticamente no Elasticsearch. Porém, ao verificar o Kibana para visualizar os dados, percebeu-se que os documentos do índice estavam vazios, sem informações relevantes.
+
+**Solução Implementada**
+Para corrigir o problema de dados ausentes no Kibana, foram realizadas as seguintes etapas:
+
+   1. Exclusão do Índice Vazio: Foi utilizado o comando "curl" no terminal para excluir o índice "obitoscvd19" previamente criado no Elasticsearch. O comando utilizado foi:
+```
+curl -X DELETE "http://localhost:9200/obitoscvd19"
+```
+   2. Criação de um Novo Índice com Mapeamentos Corretos: Após excluir o índice vazio, um novo índice com o mapeamento de schema correto foi criado para garantir a correta indexação dos dados provenientes do tópico do Kafka. O comando "curl" utilizado para criar o novo índice foi:
+```
+curl -X PUT "http://localhost:9200/obitoscvd19" -H "Content-Type: application/json" -d '{
+  "settings": {
+    "index": {
+      "number_of_shards": "1",
+      "number_of_replicas": "1"
+    }
+  },
+  "mappings": {
+    "properties": {
+      "Visualização": { "type": "text" },
+      "Óbitos Acumulados": { "type": "float" },
+      "Óbitos Novos": { "type": "float" },
+      "Letalidade (%)": { "type": "float" },
+      "Mortalidade": { "type": "float" }
+    }
+  }
+}'
+
+```
+
+#### 5.8.3 Indexação de Dados no Elasticsearch
+Durante o desenvolvimento do projeto, a proposta inicial era utilizar o Jupyter Notebook integrado com o Elastic para o envio dos dados. No entanto, após diversas tentativas com criação de conector e refazer o índice, não foi possível realizar o envio dos dados pelo Jupyter Notebook. Diante desse impasse, uma alternativa foi adotada para garantir o prosseguimento do projeto:
+
+- A indexação dos dados no Elasticsearch foi realizada usando o comando "curl" para enviar uma solicitação HTTP POST com o documento e dados a ser indexado. O comando "cURL" utilizado foi o seguinte:
+```
+curl -X POST "http://localhost:9200/obitoscvd19/_doc" -H "Content-Type: application/json" -d '{
+  "Visualização": "ÓBITOS CONFIRMADOS",
+  "Óbitos Acumulados": 274784085.0,
+  "Óbitos Novos": 0.6021753615221359,
+  "Letalidade (%)": 2.74826075895997,
+  "Mortalidade": 0.0274826075895997
+}'
+```
+Checando os dados no elastic :
+![img14](https://github.com/cinthialet/spark-hive-elastic_semantix/blob/main/img/IMAGEM%2014.png)
+
+
+#### 5.8.4 Checagem no Kibana
+No Kibana, foi verificado que o tópico nele criado (```obitoscvd19```) tem um dcoumento indexado, conforme feito no passo 5.8.3 :
+![img15](https://github.com/cinthialet/spark-hive-elastic_semantix/blob/main/img/IMAGEM%2015.png)
+
+E também é possível verificar os dados pelo Kibana > Discover:
+![img16](https://github.com/cinthialet/spark-hive-elastic_semantix/blob/main/img/IMAGEM%2016.png)
 
 
 ## Conclusão
