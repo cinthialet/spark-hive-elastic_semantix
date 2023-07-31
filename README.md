@@ -269,7 +269,7 @@ df_total.select(sum("recuperadosNovos").alias("totalRecuperadosNovos"), sum("emA
 
 ```
 Abaixo, a imagem mostrando o resultado : 
-<IMAGEM 0006>
+![img6](https://github.com/cinthialet/spark-hive-elastic_semantix/blob/main/img/IMAGEM%2006.png)
 
 ### 5.5 Salvar a Segunda Visualização como Formato Parquet com Compressão Snappy
 Nesta etapa, a Visualização 2 é salva em formato Parquet com compressão Snappy. O DataFrame kpi_visualizacao2 é criado com os resultados dos KPIs calculados anteriormente. O formato Parquet é um formato de armazenamento colunar altamente eficiente para grandes conjuntos de dados, e a compressão Snappy é utilizada para reduzir o espaço de armazenamento ocupado pelos dados.
@@ -285,8 +285,7 @@ df_viz2.show()
 ```
 
 Abaixo, a imagem mostrando o resultado : 
-<IMAGEM 0007>
-
+![img7](https://github.com/cinthialet/spark-hive-elastic_semantix/blob/main/img/IMAGEM%2007.png)
 
 ### 5.6 Envio dos dados para um tópico Kafka (via terminal)
 
@@ -303,7 +302,7 @@ kafka-topics --bootstrap-server localhost:9092 --topic obitoscvd19 --create --pa
 ```
 
 Abaixo, a imagem mostrando o resultado : 
-<IMAGEM 0008>
+![img8](https://github.com/cinthialet/spark-hive-elastic_semantix/blob/main/img/IMAGEM%2008.png)
 
 #### 5.6.2 Envio dos dados para o tópico Kafka (via Confluent)
 Durante o desenvolvimento do projeto, a proposta inicial era utilizar o Jupyter Notebook integrado com o Kafka para o envio dos dados. No entanto, após diversas tentativas, não foi possível realizar o envio dos dados pelo Jupyter Notebook para o Kafka. Diante desse impasse, uma alternativa foi adotada para garantir o prosseguimento do projeto.
@@ -354,8 +353,8 @@ Com isso, o tópico kafka `obitoscvd19` está conectado ao stream `stream_obitos
 
 Embora tenha enfrentado dificuldades com a integração inicial do Jupyter Notebook com o Kafka, a abordagem adotada com o KSQLDB permitiu avançar no projeto e garantir a disponibilidade dos dados na plataforma Kafka. Futuramente, será possível reavaliar a integração com o Jupyter Notebook para tornar o processo ainda mais eficiente e otimizado.
 
-<IMAGEM 0009>
-<IMAGEM 0010>
+![img9](https://github.com/cinthialet/spark-hive-elastic_semantix/blob/main/img/IMAGEM%2009.png)
+![img10](https://github.com/cinthialet/spark-hive-elastic_semantix/blob/main/img/IMAGEM%20010.png)
 
 Para checar os dados no tópico Kafka, foi utilizado o seguinte comando (via terminal) `kafka-console-consumer --topic obitoscvd19 --bootstrap-server localhost:9092 --from-beginning` e obtido o resultado : 
 
@@ -395,7 +394,7 @@ Explicação do código:
 Essa visualização pode fornecer insights valiosos para análise da evolução da COVID-19 em diferentes regiões e municípios, permitindo a identificação de padrões e tendências ao longo do tempo. Além disso, o cálculo da incidência e mortalidade por 100.000 habitantes ajuda a comparar a situação entre diferentes localidades, levando em consideração o tamanho da população de cada região.
 
 Abaixo, o resultado : 
-<IMAGEM 0012>
+![img12](https://github.com/cinthialet/spark-hive-elastic_semantix/blob/main/img/IMAGEM%20012.png)
 
 ### 5.8. Enviar os dados da visualização 3 para um tópico Elastic
 
