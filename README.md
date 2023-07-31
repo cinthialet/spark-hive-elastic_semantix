@@ -28,10 +28,12 @@ Este projeto final de Spark tem como objetivo criar visualizações de dados rel
 7. [Contato](#contato)
 
 ## Sobre o Projeto
+[voltar para sumário](#sum%C3%A1rio)
 
 O projeto final de Spark é uma oportunidade para os participantes colocarem em prática os conhecimentos adquiridos no treinamento, trabalhando com dados reais da Campanha Nacional de Vacinação contra Covid-19. O desafio está dividido em nível básico e avançado. A solução será feita usando Spark , Hive , Kafka , Jupyter Notebook , Docker/Docker-compose , Elastic e Kibana.
 
 ## Sobre os Dados
+[voltar para sumário](#sum%C3%A1rio)
 
 Os dados utilizados no projeto estão disponíveis em um arquivo compactado, cujo link é fornecido abaixo. Esses dados são referentes ao Painel Geral da Covid-19 no Brasil e estão disponíveis no site oficial do governo brasileiro sobre a pandemia.
 
@@ -40,6 +42,7 @@ Link dos Dados: [Dados do Painel Geral da Covid-19 - 06 de julho de 2021](https:
 Os dados da Campanha Nacional de Vacinação contra Covid-19 estão disponíveis em formato CSV com as seguintes colunas:
 
 ### Documentação Técnica dos dados
+[voltar para sumário](#sum%C3%A1rio)
 
 Os dados da Campanha Nacional de Vacinação contra Covid-19 estão disponíveis em formato CSV com as seguintes colunas:
 
@@ -65,6 +68,7 @@ Os dados da Campanha Nacional de Vacinação contra Covid-19 estão disponíveis
 
 
 ## Sobre os Arquivos
+[voltar para sumário](#sum%C3%A1rio)
 
 ### Docker-compose
 
@@ -134,6 +138,7 @@ O Spark Session é criado utilizando a biblioteca `pyspark.sql.SparkSession`. É
 
 
 ## Execução do Projeto
+[voltar para sumário](#sum%C3%A1rio)
 
 A execução do projeto envolve várias etapas, que são detalhadas abaixo:
 
@@ -172,6 +177,8 @@ Abaixo, a imagem mostrando o resultado do envio dos dados para HDFS :
 ![Dados no HDFS](https://github.com/cinthialet/spark-hive-elastic_semantix/blob/main/img/IMAGEM%2001.png)
 
 ### 5.2. Otimizar todos os dados do hdfs para uma tabela Hive particionada por município
+[voltar para sumário](#sum%C3%A1rio)
+
 Para otimizar os dados do HDFS e criar uma tabela Hive particionada por município, precisamos realizar as seguintes etapas no código:
 
     1. Combinar os DataFrames individuais em um único DataFrame usando a função union.
@@ -197,11 +204,15 @@ Abaixo, a imagem mostrando o resultado :
 ![img2](https://github.com/cinthialet/spark-hive-elastic_semantix/blob/main/img/IMAGEM%2002.png)
 
 ### 5.3. Criar as 3 visualizações pelo Spark com os dados enviados para o HDFS
+[voltar para sumário](#sum%C3%A1rio)
+
 Neste item 5.3, são apresentadas as etapas para criar as três visualizações utilizando o Spark com os dados previamente enviados para o HDFS (Hadoop Distributed File System). O projeto utiliza diversas tecnologias e serviços, como o Apache Spark para processamento e análise de dados, HDFS para armazenamento distribuído, Hive para a criação de tabelas particionadas, além do uso do Kafka para a criação de um tópico para os dados resultantes da terceira visualização.
 
 As etapas do item 5.3 é dividida em :
 
 #### 5.3.1 Criação da Visualização 1
+[voltar para sumário](#sum%C3%A1rio)
+
 Nesta etapa, o código calcula os KPIs (Indicadores-Chave de Desempenho) de "Casos Recuperados" e "Em Acompanhamento" a partir do DataFrame df_total. Em seguida, exibe os valores calculados na saída padrão.
  ```python
 # Calcular os KPIs
@@ -223,6 +234,8 @@ Abaixo, a imagem mostrando o resultado :
 ![img3](https://github.com/cinthialet/spark-hive-elastic_semantix/blob/main/img/IMAGEM%2003.png)
 
 #### 5.3.2 Criação da Visualização 2
+[voltar para sumário](#sum%C3%A1rio)
+
 Nesta parte, o código calcula os KPIs de "CASOS CONFIRMADOS", incluindo os valores "Acumulados", "Casos Novos" e "Incidência". Novamente, os cálculos são feitos com base nos dados contidos no DataFrame df_total, e os resultados são exibidos na saída padrão.
 ```python
 # Calcular os KPIs
@@ -241,6 +254,8 @@ Abaixo, a imagem mostrando o resultado :
 ![img4](https://github.com/cinthialet/spark-hive-elastic_semantix/blob/main/img/IMAGEM%2004.png)
 
 #### 5.3.3 Criação da Visualização 3
+[voltar para sumário](#sum%C3%A1rio)
+
 Aqui, o código calcula os KPIs relacionados aos "ÓBITOS CONFIRMADOS", incluindo os valores de "Óbitos Acumulados", "Óbitos Novos", "Letalidade" e "Mortalidade". Os cálculos são realizados usando os dados do DataFrame df_total, e os resultados são exibidos na saída padrão.
 ```python
 # Calcular os KPIs
@@ -262,6 +277,8 @@ Abaixo, a imagem mostrando o resultado :
 ![img5](https://github.com/cinthialet/spark-hive-elastic_semantix/blob/main/img/IMAGEM%2005.png)
 
 ### 5.4 Salvar a Visualização 1 em Tabela Hive
+[voltar para sumário](#sum%C3%A1rio)
+
 Após a criação da Visualização 1, os resultados dos KPIs de "casos recuperados" e "em acompanhamento" são salvos em uma tabela Hive chamada "covid19_recuperados_acompanhamento". A tabela Hive é uma tabela particionada que armazena os dados no HDFS em um formato estruturado e otimizado para consultas.
 ```python
 # Salvar a primeira visualização como tabela Hive
@@ -272,6 +289,8 @@ Abaixo, a imagem mostrando o resultado :
 ![img6](https://github.com/cinthialet/spark-hive-elastic_semantix/blob/main/img/IMAGEM%2006.png)
 
 ### 5.5 Salvar a Segunda Visualização como Formato Parquet com Compressão Snappy
+[voltar para sumário](#sum%C3%A1rio)
+
 Nesta etapa, a Visualização 2 é salva em formato Parquet com compressão Snappy. O DataFrame kpi_visualizacao2 é criado com os resultados dos KPIs calculados anteriormente. O formato Parquet é um formato de armazenamento colunar altamente eficiente para grandes conjuntos de dados, e a compressão Snappy é utilizada para reduzir o espaço de armazenamento ocupado pelos dados.
 ```python
 # Criar DataFrame com os KPIs da segunda visualização
@@ -288,6 +307,7 @@ Abaixo, a imagem mostrando o resultado :
 ![img7](https://github.com/cinthialet/spark-hive-elastic_semantix/blob/main/img/IMAGEM%2007.png)
 
 ### 5.6 Envio dos dados para um tópico Kafka (via terminal)
+[voltar para sumário](#sum%C3%A1rio)
 
 Essa etapa se divide em duas partes::
 
@@ -305,6 +325,8 @@ Abaixo, a imagem mostrando o resultado :
 ![img8](https://github.com/cinthialet/spark-hive-elastic_semantix/blob/main/img/IMAGEM%2008.png)
 
 #### 5.6.2 Envio dos dados para o tópico Kafka (via Confluent)
+[voltar para sumário](#sum%C3%A1rio)
+
 Durante o desenvolvimento do projeto, a proposta inicial era utilizar o Jupyter Notebook integrado com o Kafka para o envio dos dados. No entanto, após diversas tentativas, não foi possível realizar o envio dos dados pelo Jupyter Notebook para o Kafka. Diante desse impasse, uma alternativa foi adotada para garantir o prosseguimento do projeto.
 
 A solução encontrada consistiu em utilizar o KSQLDB para criar os dados e enviá-los para o tópico Kafka previamente criado. Para isso, foi criada uma mensagem contendo os KPIs (Indicadores-Chave de Desempenho) esperados para a Visualização 3. Os KPIs incluídos na mensagem foram:
@@ -361,6 +383,7 @@ Para checar os dados no tópico Kafka, foi utilizado o seguinte comando (via ter
 ![img11](https://github.com/cinthialet/spark-hive-elastic_semantix/blob/main/img/IMAGEM%2011.png)
 
 ### 5.7 Criar a visualização com os dados enviados para o HDFS (via Spark):
+[voltar para sumário](#sum%C3%A1rio)
 
 O código abaixo utiliza o Apache Spark para criar uma visualização dos dados armazenados no HDFS, relacionados aos casos e óbitos da COVID-19, apresentando informações relevantes para diferentes regiões e municípios.
 
@@ -397,7 +420,7 @@ Abaixo, o resultado :
 ![img12](https://github.com/cinthialet/spark-hive-elastic_semantix/blob/main/img/IMAGEM%2012.png)
 
 ### 5.8. Enviar os dados da visualização 3 para um tópico Elastic
-
+[voltar para sumário](#sum%C3%A1rio)
 
 
 ## Conclusão
