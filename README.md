@@ -194,7 +194,7 @@ df_total.write.partitionBy("municipio").saveAsTable("covid_por_local", mode="ove
 O código acima carrega cada arquivo CSV em um DataFrame individual e, em seguida, combina todos esses DataFrames em um único DataFrame chamado df_total usando a função union. Em seguida, ele escreve o DataFrame df_total como uma tabela Hive chamada covid_por_local, particionada por município. A opção mode="overwrite" garante que a tabela será recriada caso já exista.
 
 Abaixo, a imagem mostrando o resultado : 
-<IMAGEM 0002>
+![img2](https://github.com/cinthialet/spark-hive-elastic_semantix/blob/main/img/IMAGEM%2002.png)
 
 ### 5.3. Criar as 3 visualizações pelo Spark com os dados enviados para o HDFS
 Neste item 5.3, são apresentadas as etapas para criar as três visualizações utilizando o Spark com os dados previamente enviados para o HDFS (Hadoop Distributed File System). O projeto utiliza diversas tecnologias e serviços, como o Apache Spark para processamento e análise de dados, HDFS para armazenamento distribuído, Hive para a criação de tabelas particionadas, além do uso do Kafka para a criação de um tópico para os dados resultantes da terceira visualização.
@@ -220,7 +220,7 @@ A expressão `.collect()[0][0]` é usada para extrair o resultado de uma funçã
 Nesta etapa, o código calcula os KPIs (Indicadores-Chave de Desempenho) de "Casos Recuperados" e "Em Acompanhamento" a partir do DataFrame df_total. Em seguida, exibe os valores calculados na saída padrão.
 
 Abaixo, a imagem mostrando o resultado : 
-<IMAGEM 0003>
+![img3](https://github.com/cinthialet/spark-hive-elastic_semantix/blob/main/img/IMAGEM%2003.png)
 
 #### 5.3.2 Criação da Visualização 2
 Nesta parte, o código calcula os KPIs de "CASOS CONFIRMADOS", incluindo os valores "Acumulados", "Casos Novos" e "Incidência". Novamente, os cálculos são feitos com base nos dados contidos no DataFrame df_total, e os resultados são exibidos na saída padrão.
@@ -238,7 +238,7 @@ print("Incidência:", kpi_incidencia)
 ```
 
 Abaixo, a imagem mostrando o resultado : 
-<IMAGEM 0004>
+![img4](https://github.com/cinthialet/spark-hive-elastic_semantix/blob/main/img/IMAGEM%2004.png)
 
 #### 5.3.3 Criação da Visualização 3
 Aqui, o código calcula os KPIs relacionados aos "ÓBITOS CONFIRMADOS", incluindo os valores de "Óbitos Acumulados", "Óbitos Novos", "Letalidade" e "Mortalidade". Os cálculos são realizados usando os dados do DataFrame df_total, e os resultados são exibidos na saída padrão.
@@ -259,7 +259,7 @@ print("Mortalidade:", kpi_mortalidade)
 ```
 
 Abaixo, a imagem mostrando o resultado : 
-<IMAGEM 0005>
+![img5](https://github.com/cinthialet/spark-hive-elastic_semantix/blob/main/img/IMAGEM%2005.png)
 
 ### 5.4 Salvar a Visualização 1 em Tabela Hive
 Após a criação da Visualização 1, os resultados dos KPIs de "casos recuperados" e "em acompanhamento" são salvos em uma tabela Hive chamada "covid19_recuperados_acompanhamento". A tabela Hive é uma tabela particionada que armazena os dados no HDFS em um formato estruturado e otimizado para consultas.
