@@ -33,7 +33,7 @@ Este projeto final de Spark tem como objetivo criar visualizações de dados rel
 O projeto final de Spark é uma oportunidade para os participantes colocarem em prática os conhecimentos adquiridos no treinamento, trabalhando com dados reais da Campanha Nacional de Vacinação contra Covid-19. O desafio está dividido em nível básico e avançado. A solução será feita usando Spark , Hive , Kafka , Jupyter Notebook , Docker/Docker-compose , Elastic e Kibana.
 
 ## Sobre os Dados
-[voltar para sumário](#sum%C3%A1rio).......
+[voltar para sumário](#sum%C3%A1rio)
 
 Os dados utilizados no projeto estão disponíveis em um arquivo compactado, cujo link é fornecido abaixo. Esses dados são referentes ao Painel Geral da Covid-19 no Brasil e estão disponíveis no site oficial do governo brasileiro sobre a pandemia.
 
