@@ -24,6 +24,11 @@ Este projeto final de Spark tem como objetivo criar visualizações de dados rel
      - 5.6.2 [Envio dos dados para o tópico Kafka (via Confluent)](#562-envio-dos-dados-para-o-t%C3%B3pico-kafka-via-confluent)
    - 5.7. [Criar a visualização com os dados enviados para o HDFS (via Spark):](#57-criar-a-visualiza%C3%A7%C3%A3o-com-os-dados-enviados-para-o-hdfs-via-spark)
    - 5.8. [Enviar os dados da visualização 3 para um tópico Elastic](#58-enviar-os-dados-da-visualiza%C3%A7%C3%A3o-3-para-um-t%C3%B3pico-elastic)
+      - 5.8.1 [Configuração do Conector para o Elasticsearch](#581-configura%C3%A7%C3%A3o-do-conector-para-o-elasticsearch)
+      - 5.8.2 [Criação do índice](#582-cria%C3%A7%C3%A3o-do-%C3%ADndice)) 
+      - 5.8.3 [Indexação de Dados no Elasticsearch](#583-indexação-de-dados-no-elasticsearch)
+      - 5.8.4 [Checagem no Kibana](#584-checagem-no-kibana) 
+
 6. [Conclusão](#conclusão)
 7. [Contato](#contato)
 
@@ -421,6 +426,7 @@ Abaixo, o resultado :
 
 ### 5.8. Enviar os dados da visualização 3 para um tópico Elastic
 [voltar para sumário](#sum%C3%A1rio)
+
 Essa etapa é dividida em 4 partes : 
    1. Configuração do conector
    2. Criação de índice
@@ -451,6 +457,8 @@ Abaixo mostra a conexão feita com o elasticsearch e o tópico do kafka que foi 
 
 
 #### 5.8.2 Criação do índice
+[voltar para sumário](#sum%C3%A1rio)
+
 **Descrição do Problema**
 Após a configuração do conector Elasticsearch no Control Center, o tópico "obitoscvd19" do Kafka estava sendo corretamente consumido e um índice com o mesmo nome era criado automaticamente no Elasticsearch. Porém, ao verificar o Kibana para visualizar os dados, percebeu-se que os documentos do índice estavam vazios, sem informações relevantes.
 
@@ -484,6 +492,8 @@ curl -X PUT "http://localhost:9200/obitoscvd19" -H "Content-Type: application/js
 ```
 
 #### 5.8.3 Indexação de Dados no Elasticsearch
+[voltar para sumário](#sum%C3%A1rio)
+
 Durante o desenvolvimento do projeto, a proposta inicial era utilizar o Jupyter Notebook integrado com o Elastic para o envio dos dados. No entanto, após diversas tentativas com criação de conector e refazer o índice, não foi possível realizar o envio dos dados pelo Jupyter Notebook. Diante desse impasse, uma alternativa foi adotada para garantir o prosseguimento do projeto:
 
 - A indexação dos dados no Elasticsearch foi realizada usando o comando "curl" para enviar uma solicitação HTTP POST com o documento e dados a ser indexado. O comando "cURL" utilizado foi o seguinte:
@@ -501,6 +511,8 @@ Checando os dados no elastic :
 
 
 #### 5.8.4 Checagem no Kibana
+[voltar para sumário](#sum%C3%A1rio)
+
 No Kibana, foi verificado que o tópico nele criado (```obitoscvd19```) tem um dcoumento indexado, conforme feito no passo 5.8.3 :
 ![img15](https://github.com/cinthialet/spark-hive-elastic_semantix/blob/main/img/IMAGEM%2015.png)
 
@@ -509,6 +521,7 @@ E também é possível verificar os dados pelo Kibana > Discover:
 
 
 ## Conclusão
+[voltar para sumário](#sum%C3%A1rio)
 
 O projeto proporciona uma experiência prática na utilização de ferramentas como Spark, Hive, Kafka e Elastic para análise e visualização de dados relacionados à campanha de vacinação contra a Covid-19. Ao final do projeto, os participantes terão desenvolvido soluções criativas e poderão compartilhar suas realizações no GitHub, criando um repositório organizado e documentado.
 
