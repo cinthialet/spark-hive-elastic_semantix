@@ -1,0 +1,1 @@
+# spark-hive-elastic_semantix
