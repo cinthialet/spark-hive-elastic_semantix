@@ -2,7 +2,7 @@
 
 ## Overview do Projeto e Objetivos
 
-Este projeto final de Spark tem como objetivo criar visualizações de dados relacionados à Campanha Nacional de Vacinação contra Covid-19. O projeto foi dividido em dois níveis: básico e avançado, onde o foco principal será no nível básico. Os exercícios podem ser realizados em qualquer linguagem de programação, proporcionando liberdade criativa e diferentes abordagens para as soluções.
+Este projeto final de Spark tem como objetivo criar visualizações de dados relacionados à Campanha Nacional de Vacinação contra Covid-19. O projeto foi dividido em dois níveis: básico e avançado, onde o foco principal será no nível básico. Os exercícios podem ser realizados em qualquer linguagem de programação, proporcionando liberdade criativa e diferentes abordagens para as soluções .
 
 ## Sumário
 
