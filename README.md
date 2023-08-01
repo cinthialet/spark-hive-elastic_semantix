@@ -13,6 +13,8 @@ O projeto "Análise e Visualização de Dados da COVID-19" teve como objetivo co
 
    5. Integração com o Kafka e Elasticsearch: Foi configurado o Apache Kafka para possibilitar o streaming de dados e a integração com o Elasticsearch para indexar e disponibilizar os dados em tempo real.
 
+Cinthia Santos - Engenheira de Dados - [LINKEDIN](https://www.linkedin.com/in/cinthialpsantos/)
+
 ## Sumário
 
 1. [Overview do Projeto e Objetivos](#overview-do-projeto-e-objetivos)
@@ -1096,3 +1098,5 @@ Como pontos de melhoria para projetos futuros, destaca-se a possibilidade de apr
 ## Contato
 
 Para qualquer dúvida ou interesse em contribuir com o projeto, entre em contato através do seguinte email: [cithsantos@gmail.com](mailto:cithsantos@gmail.com)
+
+Contato linkedin : [https://www.linkedin.com/in/cinthialpsantos/](https://www.linkedin.com/in/cinthialpsantos/))
