@@ -14,7 +14,9 @@ O projeto "Análise e Visualização de Dados da COVID-19" teve como objetivo co
    5. Integração com o Kafka e Elasticsearch: Foi configurado o Apache Kafka para possibilitar o streaming de dados e a integração com o Elasticsearch para indexar e disponibilizar os dados em tempo real.
 
 Cinthia Santos - Engenheira de Dados - [LINKEDIN](https://www.linkedin.com/in/cinthialpsantos/)
+
 [NOTEBOOK](https://github.com/cinthialet/spark-hive-elastic_semantix/blob/main/main/notebook/Projeto%20Final%20-%20Spark.ipynb)
+
 [DOCKER COMPOSE](https://github.com/cinthialet/spark-hive-elastic_semantix/blob/main/main/container/docker-compose-oficial.yml)
 
 ## Sumário
